@@ -1,0 +1,568 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		043D28AD548D7317DC03F9A6 /* Pods_AlpacaDictationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DC9D812B390D0E78016919 /* Pods_AlpacaDictationTests.framework */; };
+		BC41A292561E5D0A16EF949E /* Pods_AlpacaDictation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFEEC06FD2FE34E370F5566 /* Pods_AlpacaDictation.framework */; };
+		F72290071F2F5BB60049AB1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72290061F2F5BB60049AB1E /* AppDelegate.swift */; };
+		F72290091F2F5BB60049AB1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72290081F2F5BB60049AB1E /* ViewController.swift */; };
+		F722900C1F2F5BB60049AB1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F722900A1F2F5BB60049AB1E /* Main.storyboard */; };
+		F722900E1F2F5BB60049AB1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F722900D1F2F5BB60049AB1E /* Assets.xcassets */; };
+		F72290111F2F5BB60049AB1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F722900F1F2F5BB60049AB1E /* LaunchScreen.storyboard */; };
+		F722901C1F2F5BB70049AB1E /* AlpacaDictationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F722901B1F2F5BB70049AB1E /* AlpacaDictationTests.swift */; };
+		F7D4DFFB1F2F752500FA0A44 /* MyCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFA1F2F752500FA0A44 /* MyCameraViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F72290181F2F5BB70049AB1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7228FFB1F2F5BB60049AB1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F72290021F2F5BB60049AB1E;
+			remoteInfo = AlpacaDictation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04DC9D812B390D0E78016919 /* Pods_AlpacaDictationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpacaDictationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		166935BC7AA7609EB224E6DA /* Pods-AlpacaDictation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpacaDictation.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpacaDictation/Pods-AlpacaDictation.release.xcconfig"; sourceTree = "<group>"; };
+		367CFAEFEE347759F4F60CE8 /* Pods-AlpacaDictationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpacaDictationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlpacaDictationTests/Pods-AlpacaDictationTests.release.xcconfig"; sourceTree = "<group>"; };
+		7E08452570580B246F9DC52B /* Pods-AlpacaDictation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpacaDictation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpacaDictation/Pods-AlpacaDictation.debug.xcconfig"; sourceTree = "<group>"; };
+		DBFEEC06FD2FE34E370F5566 /* Pods_AlpacaDictation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlpacaDictation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE33181381ADF0977EA6C66F /* Pods-AlpacaDictationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpacaDictationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpacaDictationTests/Pods-AlpacaDictationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F72290031F2F5BB60049AB1E /* AlpacaDictation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpacaDictation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F72290061F2F5BB60049AB1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F72290081F2F5BB60049AB1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F722900B1F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F722900D1F2F5BB60049AB1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F72290101F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F72290121F2F5BB60049AB1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F72290171F2F5BB70049AB1E /* AlpacaDictationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpacaDictationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F722901B1F2F5BB70049AB1E /* AlpacaDictationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpacaDictationTests.swift; sourceTree = "<group>"; };
+		F722901D1F2F5BB70049AB1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7D4DFFA1F2F752500FA0A44 /* MyCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MyCameraViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F72290001F2F5BB60049AB1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC41A292561E5D0A16EF949E /* Pods_AlpacaDictation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F72290141F2F5BB70049AB1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				043D28AD548D7317DC03F9A6 /* Pods_AlpacaDictationTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		928FEBA41D055FD9D020CE0A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E08452570580B246F9DC52B /* Pods-AlpacaDictation.debug.xcconfig */,
+				166935BC7AA7609EB224E6DA /* Pods-AlpacaDictation.release.xcconfig */,
+				DE33181381ADF0977EA6C66F /* Pods-AlpacaDictationTests.debug.xcconfig */,
+				367CFAEFEE347759F4F60CE8 /* Pods-AlpacaDictationTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EE1F6F4626D0BC6F181AECD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBFEEC06FD2FE34E370F5566 /* Pods_AlpacaDictation.framework */,
+				04DC9D812B390D0E78016919 /* Pods_AlpacaDictationTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7228FFA1F2F5BB60049AB1E = {
+			isa = PBXGroup;
+			children = (
+				F72290051F2F5BB60049AB1E /* AlpacaDictation */,
+				F722901A1F2F5BB70049AB1E /* AlpacaDictationTests */,
+				F72290041F2F5BB60049AB1E /* Products */,
+				928FEBA41D055FD9D020CE0A /* Pods */,
+				EE1F6F4626D0BC6F181AECD1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F72290041F2F5BB60049AB1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F72290031F2F5BB60049AB1E /* AlpacaDictation.app */,
+				F72290171F2F5BB70049AB1E /* AlpacaDictationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F72290051F2F5BB60049AB1E /* AlpacaDictation */ = {
+			isa = PBXGroup;
+			children = (
+				F72290061F2F5BB60049AB1E /* AppDelegate.swift */,
+				F72290081F2F5BB60049AB1E /* ViewController.swift */,
+				F7D4DFFA1F2F752500FA0A44 /* MyCameraViewController.swift */,
+				F722900A1F2F5BB60049AB1E /* Main.storyboard */,
+				F722900D1F2F5BB60049AB1E /* Assets.xcassets */,
+				F722900F1F2F5BB60049AB1E /* LaunchScreen.storyboard */,
+				F72290121F2F5BB60049AB1E /* Info.plist */,
+			);
+			path = AlpacaDictation;
+			sourceTree = "<group>";
+		};
+		F722901A1F2F5BB70049AB1E /* AlpacaDictationTests */ = {
+			isa = PBXGroup;
+			children = (
+				F722901B1F2F5BB70049AB1E /* AlpacaDictationTests.swift */,
+				F722901D1F2F5BB70049AB1E /* Info.plist */,
+			);
+			path = AlpacaDictationTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F72290021F2F5BB60049AB1E /* AlpacaDictation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F72290201F2F5BB70049AB1E /* Build configuration list for PBXNativeTarget "AlpacaDictation" */;
+			buildPhases = (
+				275FD79F21FA7F622D2320F0 /* [CP] Check Pods Manifest.lock */,
+				F7228FFF1F2F5BB60049AB1E /* Sources */,
+				F72290001F2F5BB60049AB1E /* Frameworks */,
+				F72290011F2F5BB60049AB1E /* Resources */,
+				9C17255330DB26175883348B /* [CP] Embed Pods Frameworks */,
+				6CBE57E121DB3F87A29B6D89 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlpacaDictation;
+			productName = AlpacaDictation;
+			productReference = F72290031F2F5BB60049AB1E /* AlpacaDictation.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F72290161F2F5BB70049AB1E /* AlpacaDictationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F72290231F2F5BB70049AB1E /* Build configuration list for PBXNativeTarget "AlpacaDictationTests" */;
+			buildPhases = (
+				EFDBB23EF79536DC84AE137C /* [CP] Check Pods Manifest.lock */,
+				F72290131F2F5BB70049AB1E /* Sources */,
+				F72290141F2F5BB70049AB1E /* Frameworks */,
+				F72290151F2F5BB70049AB1E /* Resources */,
+				87E21B5753C6C8043DE039FC /* [CP] Embed Pods Frameworks */,
+				72118EE167263F24BC96C961 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F72290191F2F5BB70049AB1E /* PBXTargetDependency */,
+			);
+			name = AlpacaDictationTests;
+			productName = AlpacaDictationTests;
+			productReference = F72290171F2F5BB70049AB1E /* AlpacaDictationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F7228FFB1F2F5BB60049AB1E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Masataka Hirano";
+				TargetAttributes = {
+					F72290021F2F5BB60049AB1E = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					F72290161F2F5BB70049AB1E = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F72290021F2F5BB60049AB1E;
+					};
+				};
+			};
+			buildConfigurationList = F7228FFE1F2F5BB60049AB1E /* Build configuration list for PBXProject "AlpacaDictation" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F7228FFA1F2F5BB60049AB1E;
+			productRefGroup = F72290041F2F5BB60049AB1E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F72290021F2F5BB60049AB1E /* AlpacaDictation */,
+				F72290161F2F5BB70049AB1E /* AlpacaDictationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F72290011F2F5BB60049AB1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F72290111F2F5BB60049AB1E /* LaunchScreen.storyboard in Resources */,
+				F722900E1F2F5BB60049AB1E /* Assets.xcassets in Resources */,
+				F722900C1F2F5BB60049AB1E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F72290151F2F5BB70049AB1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		275FD79F21FA7F622D2320F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6CBE57E121DB3F87A29B6D89 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpacaDictation/Pods-AlpacaDictation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72118EE167263F24BC96C961 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpacaDictationTests/Pods-AlpacaDictationTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87E21B5753C6C8043DE039FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpacaDictationTests/Pods-AlpacaDictationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C17255330DB26175883348B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlpacaDictation/Pods-AlpacaDictation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFDBB23EF79536DC84AE137C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7228FFF1F2F5BB60049AB1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7D4DFFB1F2F752500FA0A44 /* MyCameraViewController.swift in Sources */,
+				F72290091F2F5BB60049AB1E /* ViewController.swift in Sources */,
+				F72290071F2F5BB60049AB1E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F72290131F2F5BB70049AB1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F722901C1F2F5BB70049AB1E /* AlpacaDictationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F72290191F2F5BB70049AB1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F72290021F2F5BB60049AB1E /* AlpacaDictation */;
+			targetProxy = F72290181F2F5BB70049AB1E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F722900A1F2F5BB60049AB1E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F722900B1F2F5BB60049AB1E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F722900F1F2F5BB60049AB1E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F72290101F2F5BB60049AB1E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F722901E1F2F5BB70049AB1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F722901F1F2F5BB70049AB1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F72290211F2F5BB70049AB1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E08452570580B246F9DC52B /* Pods-AlpacaDictation.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6LJXD8S6DM;
+				INFOPLIST_FILE = AlpacaDictation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AlpacaDictation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F72290221F2F5BB70049AB1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 166935BC7AA7609EB224E6DA /* Pods-AlpacaDictation.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6LJXD8S6DM;
+				INFOPLIST_FILE = AlpacaDictation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AlpacaDictation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		F72290241F2F5BB70049AB1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE33181381ADF0977EA6C66F /* Pods-AlpacaDictationTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AlpacaDictationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AlpacaDictationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlpacaDictation.app/AlpacaDictation";
+			};
+			name = Debug;
+		};
+		F72290251F2F5BB70049AB1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 367CFAEFEE347759F4F60CE8 /* Pods-AlpacaDictationTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AlpacaDictationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AlpacaDictationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlpacaDictation.app/AlpacaDictation";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7228FFE1F2F5BB60049AB1E /* Build configuration list for PBXProject "AlpacaDictation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F722901E1F2F5BB70049AB1E /* Debug */,
+				F722901F1F2F5BB70049AB1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F72290201F2F5BB70049AB1E /* Build configuration list for PBXNativeTarget "AlpacaDictation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F72290211F2F5BB70049AB1E /* Debug */,
+				F72290221F2F5BB70049AB1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F72290231F2F5BB70049AB1E /* Build configuration list for PBXNativeTarget "AlpacaDictationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F72290241F2F5BB70049AB1E /* Debug */,
+				F72290251F2F5BB70049AB1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F7228FFB1F2F5BB60049AB1E /* Project object */;
+}
