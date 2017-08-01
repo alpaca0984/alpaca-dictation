@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,6 +20,11 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
+  @IBAction func cancel(_ sender: UIBarButtonItem) {
+    if presentingViewController is UINavigationController {
+      dismiss(animated: true, completion: nil)
+    }
+  }
 
 }
 

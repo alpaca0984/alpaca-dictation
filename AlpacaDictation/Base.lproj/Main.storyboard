@@ -9,10 +9,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="NCp-4o-4pL">
+            <objects>
+                <navigationController id="oVU-G0-WmV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WxL-uk-D47">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WDY-Dj-ZlF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Vw-mF-SLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="770"/>
+        </scene>
         <!--New Phrase-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AlpacaDictation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -40,16 +55,21 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Phrase" id="4vq-OS-w4d">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZlW-Pf-ULq"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cPb-o2-8cZ">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="2ht-MR-z9f"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1172" y="677"/>
+            <point key="canvasLocation" x="2148" y="770"/>
         </scene>
-        <!--My Camera View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="zrC-64-Vo6">
             <objects>
-                <viewController id="Y31-MB-DTy" customClass="MyCameraViewController" customModule="AlpacaDictation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y31-MB-DTy" customClass="CameraViewController" customModule="AlpacaDictation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9hH-c4-MV8"/>
                         <viewControllerLayoutGuide type="bottom" id="Qqs-gh-bP1"/>
@@ -57,12 +77,22 @@
                     <view key="view" contentMode="scaleToFill" id="OML-mF-Xpy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbw-Ne-HZ9" customClass="SwiftyCamButton" customModule="SwiftyCam">
+                                <rect key="frame" x="149" y="555" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Shutter"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="captureButton" destination="hbw-Ne-HZ9" id="j8y-ya-3xs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhg-HG-Pew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2170" y="139"/>
+            <point key="canvasLocation" x="2148" y="-13"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ine-y9-fAH">
@@ -85,26 +115,25 @@
         <!--Your Phrases-->
         <scene sceneID="zvX-cg-fdj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vlD-By-UoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="dKT-P8-D5p" customClass="PhraseTableViewController" customModule="AlpacaDictation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Vs-Sd-syS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Vs-Sd-syS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhraseTableViewCell" rowHeight="92" id="RY0-4r-z2M" customClass="PhraseTableViewCell" customModule="AlpacaDictation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="92"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhraseTableViewCell" rowHeight="49" id="RY0-4r-z2M" customClass="PhraseTableViewCell" customModule="AlpacaDictation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RY0-4r-z2M" id="Hnh-fs-JE3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="X3w-WS-pdL">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <rect key="frame" x="0.0" y="2" width="45" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvJ-7c-prV">
-                                            <rect key="frame" x="98" y="8" width="269" height="34"/>
+                                            <rect key="frame" x="53" y="7" width="314" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -115,6 +144,7 @@
                                 <connections>
                                     <outlet property="photoImageView" destination="X3w-WS-pdL" id="DsK-Lj-mlx"/>
                                     <outlet property="titleLabel" destination="wvJ-7c-prV" id="pjH-FJ-5q2"/>
+                                    <segue destination="oVU-G0-WmV" kind="showDetail" id="Fba-PI-NDa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -133,6 +163,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlD-By-UoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1072.8" y="-13.043478260869566"/>
         </scene>

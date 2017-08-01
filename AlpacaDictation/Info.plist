@@ -28,6 +28,8 @@
 	<string>Main</string>
 	<key>NSCameraUsageDescription</key>
 	<string>foo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>baz</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>bar</string>
 	<key>UIRequiredDeviceCapabilities</key>

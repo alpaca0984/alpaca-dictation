@@ -15,7 +15,7 @@
 		F722900E1F2F5BB60049AB1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F722900D1F2F5BB60049AB1E /* Assets.xcassets */; };
 		F72290111F2F5BB60049AB1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F722900F1F2F5BB60049AB1E /* LaunchScreen.storyboard */; };
 		F722901C1F2F5BB70049AB1E /* AlpacaDictationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F722901B1F2F5BB70049AB1E /* AlpacaDictationTests.swift */; };
-		F7D4DFFB1F2F752500FA0A44 /* MyCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFA1F2F752500FA0A44 /* MyCameraViewController.swift */; };
+		F7D4DFFB1F2F752500FA0A44 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */; };
 		F7D4DFFD1F2F80D900FA0A44 /* PhraseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */; };
 		F7D4DFFF1F2F84C600FA0A44 /* PhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 		DE33181381ADF0977EA6C66F /* Pods-AlpacaDictationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpacaDictationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpacaDictationTests/Pods-AlpacaDictationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F72290031F2F5BB60049AB1E /* AlpacaDictation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpacaDictation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72290061F2F5BB60049AB1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F72290081F2F5BB60049AB1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F72290081F2F5BB60049AB1E /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F722900B1F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F722900D1F2F5BB60049AB1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F72290101F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		F72290171F2F5BB70049AB1E /* AlpacaDictationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpacaDictationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F722901B1F2F5BB70049AB1E /* AlpacaDictationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpacaDictationTests.swift; sourceTree = "<group>"; };
 		F722901D1F2F5BB70049AB1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7D4DFFA1F2F752500FA0A44 /* MyCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = MyCameraViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PhraseTableViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,7 +101,9 @@
 				928FEBA41D055FD9D020CE0A /* Pods */,
 				EE1F6F4626D0BC6F181AECD1 /* Frameworks */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		F72290041F2F5BB60049AB1E /* Products */ = {
 			isa = PBXGroup;
@@ -117,7 +119,7 @@
 			children = (
 				F72290061F2F5BB60049AB1E /* AppDelegate.swift */,
 				F72290081F2F5BB60049AB1E /* ViewController.swift */,
-				F7D4DFFA1F2F752500FA0A44 /* MyCameraViewController.swift */,
+				F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */,
 				F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */,
 				F722900A1F2F5BB60049AB1E /* Main.storyboard */,
 				F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */,
@@ -340,7 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7D4DFFD1F2F80D900FA0A44 /* PhraseTableViewController.swift in Sources */,
-				F7D4DFFB1F2F752500FA0A44 /* MyCameraViewController.swift in Sources */,
+				F7D4DFFB1F2F752500FA0A44 /* CameraViewController.swift in Sources */,
 				F72290091F2F5BB60049AB1E /* ViewController.swift in Sources */,
 				F7D4DFFF1F2F84C600FA0A44 /* PhraseTableViewCell.swift in Sources */,
 				F72290071F2F5BB60049AB1E /* AppDelegate.swift in Sources */,
@@ -410,6 +412,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6LJXD8S6DM;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -461,6 +464,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6LJXD8S6DM;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
