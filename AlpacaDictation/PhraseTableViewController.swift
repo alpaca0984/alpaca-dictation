@@ -7,34 +7,47 @@
 //
 
 import UIKit
+import Photos
 
 class PhraseTableViewController: UITableViewController {
+    
+    var assets = [PHAsset]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // Use the edit button item provided by the table view controller.
+        navigationItem.leftBarButtonItem = editButtonItem
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // search Album and set to property
+        assets = fetchPHAssets()
+    }
+    
+    private func fetchPHAssets() -> [PHAsset] {
+        let albumTitle = "AlpacaDictation"
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
+        let fetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+        guard let collection = fetchResult.firstObject else {
+            fatalError("piyo")
+        }
+        let resultAssets = PHAsset.fetchAssets(in: collection, options: nil)
+
+        return resultAssets.objects(at: IndexSet(integersIn: 0..<resultAssets.count))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        return assets.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,6 +55,13 @@ class PhraseTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
+
+        let asset: PHAsset = assets[indexPath.row]
+        cell.titleLabel.text = asset.localIdentifier
+
+        PHImageManager().requestImageData(for: asset, options: nil, resultHandler: { (data, string, orientation, hashable) in
+            cell.photoImageView.image = UIImage(data: data!)
+        })
 
         return cell
     }
@@ -54,17 +74,30 @@ class PhraseTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let asset: PHAsset = self.assets[indexPath.row]
+            if asset.canPerform(PHAssetEditOperation.delete) {
+                PHPhotoLibrary.shared().performChanges({
+                    let assetsWillDelete: NSArray = [asset]
+                    PHAssetChangeRequest.deleteAssets(assetsWillDelete)
+                }, completionHandler: { (isSuccess, error) in
+                    if isSuccess {
+                        self.assets.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    } else {
+                        // TODO: implement someday
+                    }
+                })
+            } else {
+                // TODO: implement someday
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

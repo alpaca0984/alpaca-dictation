@@ -28,7 +28,7 @@
         <!--New Phrase-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AlpacaDictation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="AlpacaDictation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -82,6 +82,9 @@
                                 <rect key="frame" x="149" y="555" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Shutter"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="AddItem" id="6NJ-Rd-ukR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -155,9 +158,10 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Your Phrases" id="Nm9-aA-CiG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="xNx-VW-UST"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KTj-up-Dp5">
                             <connections>
-                                <segue destination="Y31-MB-DTy" kind="show" identifier="AddItem" id="rkf-uh-uPO"/>
+                                <segue destination="Y31-MB-DTy" kind="show" identifier="StartVideoRecording" id="rkf-uh-uPO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -171,4 +175,7 @@
     <resources>
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6NJ-Rd-ukR"/>
+    </inferredMetricsTieBreakers>
 </document>

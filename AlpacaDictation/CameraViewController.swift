@@ -11,10 +11,9 @@ import SwiftyCam
 import Photos
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
-//class CameraViewController: UIViewController {
 
     @IBOutlet weak var captureButton: SwiftyCamButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +29,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     /*
     // MARK: - Navigation
 
@@ -43,19 +42,38 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
         print("写真が撮影されました")
     }
-    
+
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
         print("ビデオが撮影されました")
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-        }) { saved, error in
-            if saved {
-                let alertController = UIAlertController(title: "Your video was successfully saved", message: nil, preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(defaultAction)
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }
+
+        // search Album
+        let albumTitle = "AlpacaDictation"
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
+        let fetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+        
+        if let anAlbum = fetchResult.firstObject {
+            PHPhotoLibrary.shared().performChanges({
+                let createAssetRequest: PHAssetChangeRequest? = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: anAlbum)
+
+                let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
+                let enumeration: NSArray = [assetPlaceholder!]
+                albumChangeRequest!.addAssets(enumeration)
+            }, completionHandler: nil)
+        } else {
+            print("MyAlbum was not found.")
+        }        
+
+//        guard let nextViewController = storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+//            fatalError("foo")
+//        }
+////        nextViewController.message = "bar"
+//        navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
 
 }
