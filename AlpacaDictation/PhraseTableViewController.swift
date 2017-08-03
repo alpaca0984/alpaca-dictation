@@ -24,14 +24,14 @@ class PhraseTableViewController: UITableViewController {
     }
     
     private func fetchPHAssets() -> [PHAsset] {
-        let albumTitle = "AlpacaDictation"
-        let fetchOptions = PHFetchOptions()
+        let albumTitle: String = "AlpacaDictation"
+        let fetchOptions: PHFetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
-        let fetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
-        guard let collection = fetchResult.firstObject else {
+        let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+        guard let collection: PHAssetCollection = fetchResult.firstObject else {
             fatalError("piyo")
         }
-        let resultAssets = PHAsset.fetchAssets(in: collection, options: nil)
+        let resultAssets: PHFetchResult<PHAsset> = PHAsset.fetchAssets(in: collection, options: nil)
 
         return resultAssets.objects(at: IndexSet(integersIn: 0..<resultAssets.count))
     }

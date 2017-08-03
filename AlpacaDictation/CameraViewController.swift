@@ -47,15 +47,15 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         print("ビデオが撮影されました")
 
         // search Album
-        let albumTitle = "AlpacaDictation"
-        let fetchOptions = PHFetchOptions()
+        let albumTitle: String = "AlpacaDictation"
+        let fetchOptions: PHFetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
-        let fetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+        let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
         
-        if let anAlbum = fetchResult.firstObject {
+        if let collection = fetchResult.firstObject {
             PHPhotoLibrary.shared().performChanges({
-                let createAssetRequest: PHAssetChangeRequest? = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-                let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: anAlbum)
+                let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: url)
+                let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: collection)
 
                 let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
                 let enumeration: NSArray = [assetPlaceholder!]
@@ -68,7 +68,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 //        guard let nextViewController = storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
 //            fatalError("foo")
 //        }
-////        nextViewController.message = "bar"
+//        nextViewController.message = "bar"
 //        navigationController?.pushViewController(nextViewController, animated: true)
     }
     
