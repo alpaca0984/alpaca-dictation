@@ -8,10 +8,12 @@
 
 import UIKit
 import Photos
+import RealmSwift
 
 class PhraseTableViewController: UITableViewController {
     
-    var assets = [PHAsset]()
+//    var assets = [PHAsset]()
+    var assets: Results<Phrase>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,8 @@ class PhraseTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
 
         // search Album and set to property
-        assets = fetchPHAssets()
+//        assets = fetchPHAssets()
+        assets = fetchPhrases()
     }
     
     private func fetchPHAssets() -> [PHAsset] {
@@ -35,6 +38,11 @@ class PhraseTableViewController: UITableViewController {
 
         return resultAssets.objects(at: IndexSet(integersIn: 0..<resultAssets.count))
     }
+    private func fetchPhrases() -> Results<Phrase> {
+        let realm = try! Realm()
+
+        return realm.objects(Phrase.self)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,22 +55,48 @@ class PhraseTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return assets.count
+        return assets!.count
     }
 
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cellIdentifier = "PhraseTableViewCell"
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
+//            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+//        }
+//
+//        let asset: PHAsset = assets[indexPath.row]
+//        cell.titleLabel.text = asset.localIdentifier
+//
+//        PHImageManager().requestImageData(for: asset, options: nil, resultHandler: { (data, string, orientation, hashable) in
+//            cell.photoImageView.image = UIImage(data: data!)
+//        })
+//
+//        return cell
+//    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let _assets: [PHAsset] = fetchPHAssets()
+        _assets.forEach { asset in
+            print(asset.localIdentifier)
+        }
+        
         let cellIdentifier = "PhraseTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("piyo")
         }
+        guard let phrase = assets?[indexPath.row] else {
+            return cell
+        }
+        cell.titleLabel.text = phrase.phAssetidentifier
 
-        let asset: PHAsset = assets[indexPath.row]
-        cell.titleLabel.text = asset.localIdentifier
-
+        let resultAssets: PHFetchResult<PHAsset> = PHAsset.fetchAssets(withLocalIdentifiers: [phrase.phAssetidentifier], options: nil)
+        guard let asset = resultAssets.firstObject else {
+            return cell
+        }
+        
         PHImageManager().requestImageData(for: asset, options: nil, resultHandler: { (data, string, orientation, hashable) in
             cell.photoImageView.image = UIImage(data: data!)
         })
-
+        
         return cell
     }
 
@@ -75,29 +109,29 @@ class PhraseTableViewController: UITableViewController {
     */
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            let asset: PHAsset = self.assets[indexPath.row]
-            if asset.canPerform(PHAssetEditOperation.delete) {
-                PHPhotoLibrary.shared().performChanges({
-                    let assetsWillDelete: NSArray = [asset]
-                    PHAssetChangeRequest.deleteAssets(assetsWillDelete)
-                }, completionHandler: { (isSuccess, error) in
-                    if isSuccess {
-                        self.assets.remove(at: indexPath.row)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                    } else {
-                        // TODO: implement someday
-                    }
-                })
-            } else {
-                // TODO: implement someday
-            }
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//            let asset: PHAsset = self.assets[indexPath.row]
+//            if asset.canPerform(PHAssetEditOperation.delete) {
+//                PHPhotoLibrary.shared().performChanges({
+//                    let assetsWillDelete: NSArray = [asset]
+//                    PHAssetChangeRequest.deleteAssets(assetsWillDelete)
+//                }, completionHandler: { (isSuccess, error) in
+//                    if isSuccess {
+//                        self.assets.remove(at: indexPath.row)
+//                        tableView.deleteRows(at: [indexPath], with: .fade)
+//                    } else {
+//                        // TODO: implement someday
+//                    }
+//                })
+//            } else {
+//                // TODO: implement someday
+//            }
+//        } else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
+//    }
 
     /*
     // Override to support rearranging the table view.

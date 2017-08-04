@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27E8443FB76A0EB8EC75924EE4008C51"
+               BlueprintIdentifier = "06A551EECA5AEAE08E717FD948F0F362"
                BuildableName = "Pods_AlpacaDictation.framework"
                BlueprintName = "Pods-AlpacaDictation"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "27E8443FB76A0EB8EC75924EE4008C51"
+            BlueprintIdentifier = "06A551EECA5AEAE08E717FD948F0F362"
             BuildableName = "Pods_AlpacaDictation.framework"
             BlueprintName = "Pods-AlpacaDictation"
             ReferencedContainer = "container:Pods.xcodeproj">

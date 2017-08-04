@@ -18,6 +18,7 @@
 		F7D4DFFB1F2F752500FA0A44 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */; };
 		F7D4DFFD1F2F80D900FA0A44 /* PhraseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */; };
 		F7D4DFFF1F2F84C600FA0A44 /* PhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */; };
+		F7F9AF5F1F336FAC002BD095 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F9AF5E1F336FAC002BD095 /* Phrase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PhraseTableViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTableViewCell.swift; sourceTree = "<group>"; };
+		F7F9AF5E1F336FAC002BD095 /* Phrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				F72290061F2F5BB60049AB1E /* AppDelegate.swift */,
 				F72290081F2F5BB60049AB1E /* ViewController.swift */,
 				F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */,
+				F7F9AF5E1F336FAC002BD095 /* Phrase.swift */,
 				F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */,
 				F722900A1F2F5BB60049AB1E /* Main.storyboard */,
 				F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */,
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F9AF5F1F336FAC002BD095 /* Phrase.swift in Sources */,
 				F7D4DFFD1F2F80D900FA0A44 /* PhraseTableViewController.swift in Sources */,
 				F7D4DFFB1F2F752500FA0A44 /* CameraViewController.swift in Sources */,
 				F72290091F2F5BB60049AB1E /* ViewController.swift in Sources */,

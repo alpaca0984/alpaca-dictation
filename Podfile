@@ -6,7 +6,8 @@ target 'AlpacaDictation' do
   use_frameworks!
 
   # Pods for AlpacaDictation
-  pod "SwiftyCam"
+  pod 'SwiftyCam'
+  pod 'RealmSwift'
 
   target 'AlpacaDictationTests' do
     inherit! :search_paths
