@@ -41,11 +41,11 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     }
     */
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
-        print("写真が撮影されました")
+        print("took a photo")
     }
 
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
-        print("ビデオが撮影されました")
+        print("rocorded a video")
 
         // search Album
         let albumTitle: String = "AlpacaDictation"

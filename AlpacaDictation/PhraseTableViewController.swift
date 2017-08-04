@@ -11,7 +11,7 @@ import Photos
 import RealmSwift
 
 class PhraseTableViewController: UITableViewController {
-    
+
     var assets: Array<Phrase>?
 
     override func viewDidLoad() {
@@ -49,12 +49,11 @@ class PhraseTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
             fatalError("piyo")
         }
-        guard let phrase = assets?[indexPath.row] else {
-            return cell
-        }
+        let phrase = assets![indexPath.row]
 
+        // set properties to TableCell
         cell.titleLabel.text = phrase.phAssetidentifier
-        phrase.setThumbnail(to: cell.photoImageView)
+        phrase.setThumbnail(imageView: cell.photoImageView)
 
         return cell
     }
@@ -72,20 +71,25 @@ class PhraseTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             let phrase = assets![indexPath.row]
+            let realm = phrase.realm!
             let asset = phrase.getPHAsset()
+
+            // delete Phrase object
+            try! realm.write {
+                realm.delete(phrase)
+            }
+            self.assets!.remove(at: indexPath.row)
+
+            // delete PHAsset
             if asset.canPerform(PHAssetEditOperation.delete) {
                 PHPhotoLibrary.shared().performChanges({
                     let assetsWillDelete: NSArray = [asset]
                     PHAssetChangeRequest.deleteAssets(assetsWillDelete)
                 }, completionHandler: { (isSuccess, error) in
-                    if isSuccess {
-                        self.assets!.remove(at: indexPath.row)
-                    } else {
-                        // TODO: implement someday
+                    if (!isSuccess) {
+                        fatalError(error as! String)
                     }
                 })
-            } else {
-                // TODO: implement someday
             }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -114,6 +118,7 @@ class PhraseTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
+
         switch segue.identifier ?? "" {
         case "ShowDetail":
             guard let viewController = segue.destination as? ViewController else {
@@ -125,12 +130,9 @@ class PhraseTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPath(for: selectedPhraseCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
-            guard let phrase = assets?[indexPath.row] else {
-                fatalError("piyo")
-            }
-            viewController.phrase = phrase
+            viewController.phrase = assets![indexPath.row]
         case "StartVideoRecording":
-            print("start to record video")
+            break
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
