@@ -14,15 +14,15 @@ import AVFoundation
 class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var videoImageView: UIImageView!
-    
+
     var phrase: Phrase?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         titleTextField.text = phrase!.title
-        phrase!.setThumbnail(imageView: videoImageView)
+        phrase!.setThumbnail(toImageView: videoImageView)
 
         // assign tap gesture to UIImageView
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))

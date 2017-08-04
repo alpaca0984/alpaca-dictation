@@ -11,8 +11,10 @@ import Photos
 import RealmSwift
 
 class PhraseTableViewController: UITableViewController {
+    
+    // MARK: Properties
 
-    var assets: Array<Phrase>?
+    var phrases: Array<Phrase>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +23,7 @@ class PhraseTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
 
         // search Album and set to property
-        assets = fetchPhrases()
-    }
-
-    private func fetchPhrases() -> Array<Phrase> {
-        let realm = try! Realm()
-
-        return Array(realm.objects(Phrase.self))
+        phrases = fetchPhrases()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +37,7 @@ class PhraseTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return assets!.count
+        return phrases!.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,11 +45,11 @@ class PhraseTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
             fatalError("piyo")
         }
-        let phrase = assets![indexPath.row]
+        let phrase = phrases![indexPath.row]
 
         // set properties to TableCell
-        cell.titleLabel.text = phrase.phAssetidentifier
-        phrase.setThumbnail(imageView: cell.photoImageView)
+        cell.titleLabel.text = phrase.title
+        phrase.setThumbnail(toImageView: cell.photoImageView)
 
         return cell
     }
@@ -70,7 +66,8 @@ class PhraseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let phrase = assets![indexPath.row]
+
+            let phrase = phrases![indexPath.row]
             let realm = phrase.realm!
             let asset = phrase.getPHAsset()
 
@@ -78,7 +75,10 @@ class PhraseTableViewController: UITableViewController {
             try! realm.write {
                 realm.delete(phrase)
             }
-            self.assets!.remove(at: indexPath.row)
+            self.phrases!.remove(at: indexPath.row)
+
+            // delete table row
+            tableView.deleteRows(at: [indexPath], with: .fade)
 
             // delete PHAsset
             if asset.canPerform(PHAssetEditOperation.delete) {
@@ -87,7 +87,7 @@ class PhraseTableViewController: UITableViewController {
                     PHAssetChangeRequest.deleteAssets(assetsWillDelete)
                 }, completionHandler: { (isSuccess, error) in
                     if (!isSuccess) {
-                        fatalError(error as! String)
+                        print(error!)
                     }
                 })
             }
@@ -111,6 +111,14 @@ class PhraseTableViewController: UITableViewController {
     }
     */
 
+    // MARK: Private Methods
+
+    private func fetchPhrases() -> Array<Phrase> {
+        let realm = try! Realm()
+
+        return Array(realm.objects(Phrase.self))
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -130,12 +138,11 @@ class PhraseTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPath(for: selectedPhraseCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
-            viewController.phrase = assets![indexPath.row]
+            viewController.phrase = phrases![indexPath.row]
         case "StartVideoRecording":
             break
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
-
 }

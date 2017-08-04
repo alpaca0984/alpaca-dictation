@@ -12,7 +12,8 @@ import Photos
 
 class Phrase: Object {
     dynamic var title = ""
-    dynamic var phAssetidentifier = ""
+//    dynamic var phAssetidentifier = ""
+    dynamic var phAsset: PHAsset?
     dynamic var videoUrl = ""
     dynamic var createdAt = Date()
     dynamic var updatedAt = Date()
@@ -26,7 +27,7 @@ class Phrase: Object {
         return asset
     }
 
-    func setThumbnail(imageView: UIImageView) {
+    func setThumbnail(toImageView imageView: UIImageView) {
         PHImageManager().requestImageData(for: getPHAsset(), options: nil, resultHandler: { (data, string, orientation, hashable) in
             imageView.image = UIImage(data: data!)
         })

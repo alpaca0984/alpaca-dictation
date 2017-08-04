@@ -12,7 +12,6 @@ import Photos
 import RealmSwift
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
-
     @IBOutlet weak var captureButton: SwiftyCamButton!
 
     override func viewDidLoad() {
@@ -46,6 +45,11 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
         print("rocorded a video")
+        
+        // next destination
+        guard let nextViewController = storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+            fatalError("foo")
+        }
 
         // search Album
         let albumTitle: String = "AlpacaDictation"
@@ -74,25 +78,20 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
             // instantiate Phrase
             let phrase = Phrase()
-            phrase.title = "piyopiyo"
             phrase.phAssetidentifier = latestVideoAsset.localIdentifier
-            
+
             // save Phrase
-            let realm = try! Realm()
-            try! realm.write {
-                realm.add(phrase)
-            }
+//            let realm = try! Realm()
+//            try! realm.write {
+//                realm.add(phrase)
+//            }
         }))
 
-//        guard let nextViewController = storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
-//            fatalError("foo")
-//        }
-//        nextViewController.message = "bar"
-//        navigationController?.pushViewController(nextViewController, animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        nextViewController.phrase = phrase
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    }
 }
