@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WDY-Dj-ZlF"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Vw-mF-SLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -147,7 +144,7 @@
                                 <connections>
                                     <outlet property="photoImageView" destination="X3w-WS-pdL" id="DsK-Lj-mlx"/>
                                     <outlet property="titleLabel" destination="wvJ-7c-prV" id="pjH-FJ-5q2"/>
-                                    <segue destination="oVU-G0-WmV" kind="showDetail" id="Fba-PI-NDa"/>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ShowDetail" id="2iu-dl-baX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -176,6 +173,6 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6NJ-Rd-ukR"/>
+        <segue reference="2iu-dl-baX"/>
     </inferredMetricsTieBreakers>
 </document>

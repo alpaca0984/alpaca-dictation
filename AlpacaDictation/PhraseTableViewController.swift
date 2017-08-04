@@ -38,6 +38,7 @@ class PhraseTableViewController: UITableViewController {
 
         return resultAssets.objects(at: IndexSet(integersIn: 0..<resultAssets.count))
     }
+
     private func fetchPhrases() -> Results<Phrase> {
         let realm = try! Realm()
 
@@ -78,7 +79,7 @@ class PhraseTableViewController: UITableViewController {
         _assets.forEach { asset in
             print(asset.localIdentifier)
         }
-        
+
         let cellIdentifier = "PhraseTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
             fatalError("piyo")
@@ -87,16 +88,16 @@ class PhraseTableViewController: UITableViewController {
             return cell
         }
         cell.titleLabel.text = phrase.phAssetidentifier
-
+        
         let resultAssets: PHFetchResult<PHAsset> = PHAsset.fetchAssets(withLocalIdentifiers: [phrase.phAssetidentifier], options: nil)
         guard let asset = resultAssets.firstObject else {
             return cell
         }
-        
+
         PHImageManager().requestImageData(for: asset, options: nil, resultHandler: { (data, string, orientation, hashable) in
             cell.photoImageView.image = UIImage(data: data!)
         })
-        
+
         return cell
     }
 
@@ -148,14 +149,31 @@ class PhraseTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        switch segue.identifier ?? "" {
+        case "ShowDetail":
+            guard let viewController = segue.destination as? ViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let selectedPhraseCell = sender as? PhraseTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            guard let indexPath = tableView.indexPath(for: selectedPhraseCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            guard let phrase = assets?[indexPath.row] else {
+                fatalError("piyo")
+            }
+            viewController.phrase = phrase
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+        }
     }
-    */
 
 }

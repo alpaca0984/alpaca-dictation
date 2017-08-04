@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import Photos
 
 class Phrase: Object {
     dynamic var title = ""
@@ -15,4 +16,13 @@ class Phrase: Object {
     dynamic var videoUrl = ""
     dynamic var createdAt = Date()
     dynamic var updatedAt = Date()
+
+    func getPHAsset() -> PHAsset {
+        let resultAssets: PHFetchResult<PHAsset> = PHAsset.fetchAssets(withLocalIdentifiers: [phAssetidentifier], options: nil)
+        guard let asset = resultAssets.firstObject else {
+            fatalError("piyo")
+        }
+
+        return asset
+    }
 }

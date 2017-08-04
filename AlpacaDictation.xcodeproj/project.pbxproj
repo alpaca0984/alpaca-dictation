@@ -40,7 +40,7 @@
 		DE33181381ADF0977EA6C66F /* Pods-AlpacaDictationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpacaDictationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpacaDictationTests/Pods-AlpacaDictationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F72290031F2F5BB60049AB1E /* AlpacaDictation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpacaDictation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72290061F2F5BB60049AB1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F72290081F2F5BB60049AB1E /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
+		F72290081F2F5BB60049AB1E /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F722900B1F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F722900D1F2F5BB60049AB1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F72290101F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
