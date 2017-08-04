@@ -80,7 +80,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Shutter"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="AddItem" id="6NJ-Rd-ukR"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="AddItem" id="ojz-ID-Nai"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -144,7 +144,7 @@
                                 <connections>
                                     <outlet property="photoImageView" destination="X3w-WS-pdL" id="DsK-Lj-mlx"/>
                                     <outlet property="titleLabel" destination="wvJ-7c-prV" id="pjH-FJ-5q2"/>
-                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ShowDetail" id="2iu-dl-baX"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="01M-WQ-Jdr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -173,6 +173,6 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2iu-dl-baX"/>
+        <segue reference="01M-WQ-Jdr"/>
     </inferredMetricsTieBreakers>
 </document>

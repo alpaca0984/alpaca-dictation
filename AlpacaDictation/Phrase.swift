@@ -25,4 +25,10 @@ class Phrase: Object {
 
         return asset
     }
+
+    func setThumbnail(to imageView: UIImageView) {
+        PHImageManager().requestImageData(for: getPHAsset(), options: nil, resultHandler: { (data, string, orientation, hashable) in
+            imageView.image = UIImage(data: data!)
+        })
+    }
 }
