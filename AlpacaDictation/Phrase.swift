@@ -12,8 +12,7 @@ import Photos
 
 class Phrase: Object {
     dynamic var title = ""
-//    dynamic var phAssetidentifier = ""
-    dynamic var phAsset: PHAsset?
+    dynamic var phAssetidentifier = ""
     dynamic var videoUrl = ""
     dynamic var createdAt = Date()
     dynamic var updatedAt = Date()

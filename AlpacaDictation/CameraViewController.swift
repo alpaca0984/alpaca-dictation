@@ -60,34 +60,38 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
             fatalError("MyAlbum was not found.")
         }
 
-        PHPhotoLibrary.shared().performChanges({
-            // save video
-            let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: url)
-            let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
-            let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: collection)
-            let enumeration: NSArray = [assetPlaceholder!]
-            albumChangeRequest!.addAssets(enumeration)
-
-        }, completionHandler: ({ (isSuccess, error) in
-            // fetch latest video
-            let fetchOptions: PHFetchOptions = PHFetchOptions()
-            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
-                fatalError("piyo")
-            }
-
-            // instantiate Phrase
-            let phrase = Phrase()
-            phrase.phAssetidentifier = latestVideoAsset.localIdentifier
-
-            // save Phrase
+//        PHPhotoLibrary.shared().performChanges({
+//            // save video
+//            let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: url)
+//            let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
+//            let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: collection)
+//            let enumeration: NSArray = [assetPlaceholder!]
+//            albumChangeRequest!.addAssets(enumeration)
+//
+//        }, completionHandler: ({ (isSuccess, error) in
+//            // fetch latest video
+//            let fetchOptions: PHFetchOptions = PHFetchOptions()
+//            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//            guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
+//                fatalError("piyo")
+//            }
+//
+//            // instantiate Phrase
+//            let phrase = Phrase()
+//            phrase.phAssetidentifier = latestVideoAsset.localIdentifier
+//
+//            // save Phrase
 //            let realm = try! Realm()
 //            try! realm.write {
 //                realm.add(phrase)
 //            }
-        }))
+//        }))
 
-        nextViewController.phrase = phrase
+//        let urls: [NSURL] =
+//        let avUrlAsset = AVURLAsset(url: url)
+//        let imageGenerator = AVAssetImageGenerator(asset: avUrlAsset)
+        
+        nextViewController.tmpVideoAsset = AVURLAsset(url: url)
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 

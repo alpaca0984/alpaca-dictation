@@ -15,14 +15,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var videoImageView: UIImageView!
 
-    var phrase: Phrase?
+    var phrase: Phrase?            // for persisted item
+    var tmpVideoPHAsset: PHAsset?  // for new item not saved yet
+    var tmpVideoAsset: AVURLAsset? // for new item not saved yet
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        titleTextField.text = phrase!.title
-        phrase!.setThumbnail(toImageView: videoImageView)
+        if let phrase = phrase {
+            titleTextField.text = phrase.title
+            phrase.setThumbnail(toImageView: videoImageView)
+        } else {
+            let imgGenerator = AVAssetImageGenerator(asset: tmpVideoAsset!)
+            let cgImage = try! imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+            videoImageView.image = UIImage(cgImage: cgImage)
+        }
 
         // assign tap gesture to UIImageView
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
@@ -34,16 +42,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         // activate play sound
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
 
-        // play video
-        let imageManager: PHImageManager = .default()
-        imageManager.requestPlayerItem(forVideo: phrase!.getPHAsset(), options: nil, resultHandler: { (playerItem, hashable) in
+        // process for playing video
+        let playVideo = { (_ playerItem: AVPlayerItem) in
             let player = AVPlayer(playerItem: playerItem)
             let playerViewController = AVPlayerViewController()
             playerViewController.player = player
             self.present(playerViewController, animated: true) {
                 playerViewController.player!.play()
             }
-        })
+        }
+
+        // play video
+        if let phrase = phrase {
+            PHImageManager.default().requestPlayerItem(forVideo: phrase.getPHAsset(), options: nil, resultHandler: { (playerItem, hashable) in
+                playVideo(playerItem!)
+            })
+        } else {
+            let playerItem = AVPlayerItem(asset: tmpVideoAsset!)
+            playVideo(playerItem)
+        }
     }
 
     override func didReceiveMemoryWarning() {
