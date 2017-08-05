@@ -52,13 +52,13 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         }
 
         // search Album
-        let albumTitle: String = "AlpacaDictation"
-        let fetchOptions: PHFetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
-        let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
-        guard let collection = fetchResult.firstObject else {
-            fatalError("MyAlbum was not found.")
-        }
+//        let albumTitle: String = "AlpacaDictation"
+//        let fetchOptions: PHFetchOptions = PHFetchOptions()
+//        fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
+//        let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+//        guard fetchResult.firstObject != nil else {
+//            fatalError("MyAlbum was not found.")
+//        }
 
 //        PHPhotoLibrary.shared().performChanges({
 //            // save video

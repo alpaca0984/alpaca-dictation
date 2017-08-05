@@ -17,18 +17,20 @@ class Phrase: Object {
     dynamic var createdAt = Date()
     dynamic var updatedAt = Date()
 
-    func getPHAsset() -> PHAsset {
+    func getPHAsset() -> PHAsset? {
         let resultAssets: PHFetchResult<PHAsset> = PHAsset.fetchAssets(withLocalIdentifiers: [phAssetidentifier], options: nil)
         guard let asset = resultAssets.firstObject else {
-            fatalError("piyo")
+            return nil
         }
 
         return asset
     }
 
     func setThumbnail(toImageView imageView: UIImageView) {
-        PHImageManager().requestImageData(for: getPHAsset(), options: nil, resultHandler: { (data, string, orientation, hashable) in
-            imageView.image = UIImage(data: data!)
-        })
+        if let asset = getPHAsset() {
+            PHImageManager().requestImageData(for: asset, options: nil, resultHandler: { (data, string, orientation, hashable) in
+                imageView.image = UIImage(data: data!)
+            })
+        }
     }
 }

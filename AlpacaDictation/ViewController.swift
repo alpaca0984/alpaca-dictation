@@ -60,9 +60,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 
         // play video
         if let phrase = phrase {
-            PHImageManager.default().requestPlayerItem(forVideo: phrase.getPHAsset(), options: nil, resultHandler: { (playerItem, hashable) in
-                playVideo(playerItem!)
-            })
+            if let asset = phrase.getPHAsset() {
+                PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil, resultHandler: { (playerItem, hashable) in
+                    playVideo(playerItem!)
+                })
+            }
         } else {
             let playerItem = AVPlayerItem(asset: tmpVideoAsset!)
             playVideo(playerItem)
@@ -104,15 +106,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        
+
+        // input values
         let title = titleTextField.text ?? ""
 
         if let phrase = phrase {
+            // update Phrase properties
             let realm = phrase.realm!
             try! realm.write {
                 phrase.title = title
             }
         } else {
+            // fetch Album
             let albumTitle: String = "AlpacaDictation"
             let fetchOptions: PHFetchOptions = PHFetchOptions()
             fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
@@ -121,6 +126,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
                 fatalError("MyAlbum was not found.")
             }
 
+            // instantiate new Phrase that will be saved
+            phrase = Phrase(value: ["title" : title])
+
+            // save PHAsset and Phrase model
             PHPhotoLibrary.shared().performChanges({
                 // save video
                 let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: self.tmpVideoAsset!.url)
@@ -136,18 +145,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
                 guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
                     fatalError("piyo")
                 }
-    
-                // instantiate Phrase
-                let phrase = Phrase()
-                phrase.title = title
-                phrase.phAssetidentifier = latestVideoAsset.localIdentifier
-    
-                // save Phrase
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.add(phrase)
+
+                DispatchQueue.main.async {
+                    self.phrase!.phAssetidentifier = latestVideoAsset.localIdentifier
+                    // save Phrase
+                    let realm = try! Realm()
+                    try! realm.write {
+                        realm.add(self.phrase!)
+                    }
                 }
-                self.phrase = phrase
             }))
         }
     }

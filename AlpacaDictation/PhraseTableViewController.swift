@@ -69,7 +69,6 @@ class PhraseTableViewController: UITableViewController {
 
             let phrase = phrases![indexPath.row]
             let realm = phrase.realm!
-            let asset = phrase.getPHAsset()
 
             // delete Phrase object
             try! realm.write {
@@ -81,7 +80,7 @@ class PhraseTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
 
             // delete PHAsset
-            if asset.canPerform(PHAssetEditOperation.delete) {
+            if let asset = phrase.getPHAsset(), asset.canPerform(PHAssetEditOperation.delete) {
                 PHPhotoLibrary.shared().performChanges({
                     let assetsWillDelete: NSArray = [asset]
                     PHAssetChangeRequest.deleteAssets(assetsWillDelete)
@@ -145,10 +144,23 @@ class PhraseTableViewController: UITableViewController {
 
         return Array(realm.objects(Phrase.self))
     }
-    
-    // MARK: Actions
-    
-    @IBAction func unwindToPhraseList(sender: UIStoryboardSegue) {
 
+    // MARK: Actions
+
+    @IBAction func unwindToPhraseList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ViewController, let phrase = sourceViewController.phrase {
+            if let selectdIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing phrase.
+                phrases![selectdIndexPath.row] = phrase
+                tableView.reloadRows(at: [selectdIndexPath], with: .none)
+            } else {
+                // Add a new phrase.
+                print(phrase.phAssetidentifier)
+                let newIndexPath = IndexPath(row: phrases!.count, section: 0)
+ 
+                phrases!.append(phrase)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
     }
 }
