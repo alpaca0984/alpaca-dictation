@@ -11,10 +11,10 @@ import Photos
 import RealmSwift
 
 class PhraseTableViewController: UITableViewController {
-    
+
     // MARK: Properties
 
-    var phrases: Array<Phrase>?
+    var phrases: Array<Phrase>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class PhraseTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return phrases!.count
+        return phrases.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +45,7 @@ class PhraseTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
             fatalError("piyo")
         }
-        let phrase = phrases![indexPath.row]
+        let phrase = phrases[indexPath.row]
 
         // set properties to TableCell
         cell.titleLabel.text = phrase.title
@@ -67,7 +67,7 @@ class PhraseTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
 
-            let phrase = phrases![indexPath.row]
+            let phrase = phrases[indexPath.row]
 
             // delete PHAsset
             if let asset = phrase.getPHAsset(), asset.canPerform(PHAssetEditOperation.delete) {
@@ -88,7 +88,7 @@ class PhraseTableViewController: UITableViewController {
             }
 
             // delete from view
-            phrases!.remove(at: indexPath.row)
+            phrases.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
 
         } else if editingStyle == .insert {
@@ -113,10 +113,7 @@ class PhraseTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
 
         switch segue.identifier ?? "" {
@@ -130,7 +127,8 @@ class PhraseTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPath(for: selectedPhraseCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
-            viewController.phrase = phrases![indexPath.row]
+            // Pass the selected object to the new view controller.
+            viewController.phrase = phrases[indexPath.row]
         case "StartVideoRecording":
             break
         default:
@@ -153,14 +151,12 @@ class PhraseTableViewController: UITableViewController {
         if let sourceViewController = sender.source as? ViewController, let phrase = sourceViewController.phrase {
             if let selectdIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing phrase.
-                phrases![selectdIndexPath.row] = phrase
+                phrases[selectdIndexPath.row] = phrase
                 tableView.reloadRows(at: [selectdIndexPath], with: .none)
             } else {
                 // Add a new phrase.
-                print(phrase.phAssetidentifier)
-                let newIndexPath = IndexPath(row: phrases!.count, section: 0)
- 
-                phrases!.append(phrase)
+                let newIndexPath = IndexPath(row: phrases.count, section: 0)
+                phrases.append(phrase)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }

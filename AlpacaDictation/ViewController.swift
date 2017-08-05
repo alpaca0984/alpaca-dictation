@@ -16,25 +16,26 @@ import os.log
 class ViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
 
     // MARK: Properties
-    
+
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var videoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
-    var phrase: Phrase?            // for persisted item
-    var tmpVideoAsset: AVURLAsset? // for new item not saved yet
+    var phrase: Phrase!            // for persisted item
+    var tmpVideoAsset: AVURLAsset! // for new item not saved yet
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         titleTextField.delegate = self
 
-        if let phrase = phrase {
+        if phrase != nil {
             titleTextField.text = phrase.title
             phrase.setThumbnail(toImageView: videoImageView)
         } else {
-            let imgGenerator = AVAssetImageGenerator(asset: tmpVideoAsset!)
-            let cgImage = try! imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+            let imageGenerator = AVAssetImageGenerator(asset: tmpVideoAsset)
+            imageGenerator.appliesPreferredTrackTransform = true
+            let cgImage = try! imageGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
             videoImageView.image = UIImage(cgImage: cgImage)
         }
 
@@ -52,12 +53,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
 
         // play video
-        if let phrase = phrase, let asset = phrase.getPHAsset() {
+        if phrase != nil, let asset = phrase.getPHAsset() {
             PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil, resultHandler: { (playerItem, hashable) in
                 self.playVideo(playerItem: playerItem!)
             })
         } else {
-            let playerItem = AVPlayerItem(asset: tmpVideoAsset!)
+            let playerItem = AVPlayerItem(asset: tmpVideoAsset)
             playVideo(playerItem: playerItem)
         }
     }
@@ -66,7 +67,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: UITextFieldDelegate
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -105,7 +106,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
         // input values
         let title = titleTextField.text ?? ""
 
-        if let phrase = phrase {
+        if phrase != nil {
             // update Phrase properties
             let realm = phrase.realm!
             try! realm.write {
@@ -127,7 +128,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
             // save PHAsset and Phrase model
             PHPhotoLibrary.shared().performChanges({
                 // save video
-                let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: self.tmpVideoAsset!.url)
+                let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: self.tmpVideoAsset.url)
                 let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
                 let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: collection)
                 let enumeration: NSArray = [assetPlaceholder!]
@@ -142,11 +143,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
                 }
 
                 DispatchQueue.main.async {
-                    self.phrase!.phAssetidentifier = latestVideoAsset.localIdentifier
+                    self.phrase.phAssetidentifier = latestVideoAsset.localIdentifier
                     // save Phrase
                     let realm = try! Realm()
                     try! realm.write {
-                        realm.add(self.phrase!)
+                        realm.add(self.phrase)
                     }
                 }
             }))

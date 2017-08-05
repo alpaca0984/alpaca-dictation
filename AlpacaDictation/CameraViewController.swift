@@ -11,14 +11,14 @@ import SwiftyCam
 import Photos
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
-    
+
     // MARK: Properties
 
     @IBOutlet weak var captureButton: SwiftyCamButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         maximumVideoDuration = 10.0
 
         cameraDelegate = self
@@ -31,7 +31,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: Delegate for SwiftyCamViewController
 
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     
     // configuration for the default Realm
-    let config = Realm.Configuration(schemaVersion: 1)
+    let config = Realm.Configuration(schemaVersion: 3)
     Realm.Configuration.defaultConfiguration = config
 
     return true

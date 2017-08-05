@@ -11,7 +11,7 @@ import RealmSwift
 import Photos
 
 class Phrase: Object {
-    
+
     // MARK: Properties
 
     dynamic var title = ""
