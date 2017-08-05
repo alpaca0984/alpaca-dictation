@@ -68,16 +68,6 @@ class PhraseTableViewController: UITableViewController {
             // Delete the row from the data source
 
             let phrase = phrases![indexPath.row]
-            let realm = phrase.realm!
-
-            // delete Phrase object
-            try! realm.write {
-                realm.delete(phrase)
-            }
-            self.phrases!.remove(at: indexPath.row)
-
-            // delete table row
-            tableView.deleteRows(at: [indexPath], with: .fade)
 
             // delete PHAsset
             if let asset = phrase.getPHAsset(), asset.canPerform(PHAssetEditOperation.delete) {
@@ -90,6 +80,17 @@ class PhraseTableViewController: UITableViewController {
                     }
                 })
             }
+
+            // delete Phrase object
+            let realm = phrase.realm!
+            try! realm.write {
+                realm.delete(phrase)
+            }
+
+            // delete from view
+            phrases!.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
