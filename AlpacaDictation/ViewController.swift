@@ -54,8 +54,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
 
         // play video
         if phrase != nil, let asset = phrase.getPHAsset() {
-            PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil, resultHandler: { (playerItem, hashable) in
-                self.playVideo(playerItem: playerItem!)
+            PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil, resultHandler: { (result, info) in
+                self.playVideo(playerItem: result!)
             })
         } else {
             let playerItem = AVPlayerItem(asset: tmpVideoAsset)

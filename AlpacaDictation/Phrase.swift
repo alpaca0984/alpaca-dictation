@@ -30,8 +30,14 @@ class Phrase: Object {
 
     func setThumbnail(toImageView imageView: UIImageView) {
         if let asset = getPHAsset() {
-            PHImageManager().requestImageData(for: asset, options: nil, resultHandler: { (data, string, orientation, hashable) in
-                imageView.image = UIImage(data: data!)
+            // parameters and options for requesting thumbnail
+            let frameSize = imageView.frame.size
+            let options = PHImageRequestOptions()
+            options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
+            options.isSynchronous = true
+
+            PHImageManager().requestImage(for: asset, targetSize: frameSize, contentMode: PHImageContentMode.aspectFit, options: options, resultHandler: { (result, info) in
+                imageView.image = result
             })
         }
     }

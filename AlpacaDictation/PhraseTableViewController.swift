@@ -74,8 +74,8 @@ class PhraseTableViewController: UITableViewController {
                 PHPhotoLibrary.shared().performChanges({
                     let assetsWillDelete: NSArray = [asset]
                     PHAssetChangeRequest.deleteAssets(assetsWillDelete)
-                }, completionHandler: { (isSuccess, error) in
-                    if (!isSuccess) {
+                }, completionHandler: { (success, error) in
+                    if (!success) {
                         print(error!)
                     }
                 })
