@@ -115,7 +115,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
         } else {
             // fetch Album
             let albumTitle: String = "AlpacaDictation"
-            let fetchOptions: PHFetchOptions = PHFetchOptions()
+            var fetchOptions: PHFetchOptions = PHFetchOptions()
             fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
             let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
             guard let collection = fetchResult.firstObject else {
@@ -133,21 +133,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
                 let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: collection)
                 let enumeration: NSArray = [assetPlaceholder!]
                 albumChangeRequest!.addAssets(enumeration)
-
-                // fetch latest video
-                let fetchOptions: PHFetchOptions = PHFetchOptions()
-                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-                guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
-                    fatalError("piyo")
-                }
-                self.phrase.phAssetidentifier = latestVideoAsset.localIdentifier
-
-                // save Phrase
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.add(self.phrase)
-                }
             })
+
+            // fetch latest video
+            fetchOptions = PHFetchOptions()
+            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
+                fatalError("piyo")
+            }
+            self.phrase.phAssetidentifier = latestVideoAsset.localIdentifier
+
+            // save Phrase
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(self.phrase)
+            }
         }
     }
 
