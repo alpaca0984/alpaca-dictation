@@ -126,7 +126,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
             phrase = Phrase(value: ["title" : title])
 
             // save PHAsset and Phrase model
-            PHPhotoLibrary.shared().performChanges({
+            try! PHPhotoLibrary.shared().performChangesAndWait({
                 // save video
                 let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: self.tmpVideoAsset.url)
                 let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
@@ -134,23 +134,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
                 let enumeration: NSArray = [assetPlaceholder!]
                 albumChangeRequest!.addAssets(enumeration)
 
-            }, completionHandler: ({ (isSuccess, error) in
                 // fetch latest video
                 let fetchOptions: PHFetchOptions = PHFetchOptions()
                 fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
                 guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
                     fatalError("piyo")
                 }
+                self.phrase.phAssetidentifier = latestVideoAsset.localIdentifier
 
-                DispatchQueue.main.async {
-                    self.phrase.phAssetidentifier = latestVideoAsset.localIdentifier
-                    // save Phrase
-                    let realm = try! Realm()
-                    try! realm.write {
-                        realm.add(self.phrase)
-                    }
+                // save Phrase
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(self.phrase)
                 }
-            }))
+            })
         }
     }
 
