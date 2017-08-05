@@ -41,7 +41,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
 
         // assign tap gesture to UIImageView
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
-        videoImageView.isUserInteractionEnabled = true
         videoImageView.addGestureRecognizer(tapGestureRecognizer)
 
         // Enable the Save button only if the text field has a valid Phrase name.

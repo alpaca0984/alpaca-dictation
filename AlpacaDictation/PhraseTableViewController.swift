@@ -48,7 +48,13 @@ class PhraseTableViewController: UITableViewController {
         let phrase = phrases[indexPath.row]
 
         // set properties to TableCell
+
         cell.titleLabel.text = phrase.title
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss"
+        cell.createdAtLabel.text = dateFormatter.string(from: phrase.createdAt)
+
         phrase.setThumbnail(toImageView: cell.photoImageView)
 
         return cell

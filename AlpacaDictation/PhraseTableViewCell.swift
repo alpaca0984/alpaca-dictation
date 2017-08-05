@@ -11,6 +11,7 @@ import UIKit
 class PhraseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
 
     override func awakeFromNib() {
