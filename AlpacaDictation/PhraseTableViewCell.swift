@@ -9,10 +9,10 @@
 import UIKit
 
 class PhraseTableViewCell: UITableViewCell {
-  
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var photoImageView: UIImageView!
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

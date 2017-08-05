@@ -13,7 +13,8 @@ import AVFoundation
 import RealmSwift
 import os.log
 
-class ViewController: UIViewController, UINavigationControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
+
     // MARK: Properties
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -25,6 +26,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        titleTextField.delegate = self
 
         if let phrase = phrase {
             titleTextField.text = phrase.title
@@ -48,26 +51,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         // activate play sound
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
 
-        // process for playing video
-        let playVideo = { (_ playerItem: AVPlayerItem) in
-            let player = AVPlayer(playerItem: playerItem)
-            let playerViewController = AVPlayerViewController()
-            playerViewController.player = player
-            self.present(playerViewController, animated: true) {
-                playerViewController.player!.play()
-            }
-        }
-
         // play video
-        if let phrase = phrase {
-            if let asset = phrase.getPHAsset() {
-                PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil, resultHandler: { (playerItem, hashable) in
-                    playVideo(playerItem!)
-                })
-            }
+        if let phrase = phrase, let asset = phrase.getPHAsset() {
+            PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil, resultHandler: { (playerItem, hashable) in
+                self.playVideo(playerItem: playerItem!)
+            })
         } else {
             let playerItem = AVPlayerItem(asset: tmpVideoAsset!)
-            playVideo(playerItem)
+            playVideo(playerItem: playerItem)
         }
     }
 
@@ -80,13 +71,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
-//        saveButton.isEnabled = false
+        saveButton.isEnabled = false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
     }
 
     // MARK: Navigation
@@ -162,7 +157,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 
     private func updateSaveButtonState() {
         // Disable the Save button if the text field is empty.
-//        let text = titleTextField.text ?? ""
-//        saveButton.isEnabled = !text.isEmpty
+        let text = titleTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
+
+    private func playVideo(playerItem: AVPlayerItem) {
+        let player = AVPlayer(playerItem: playerItem)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        self.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+    }
+
 }

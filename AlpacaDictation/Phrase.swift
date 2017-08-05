@@ -11,9 +11,11 @@ import RealmSwift
 import Photos
 
 class Phrase: Object {
+    
+    // MARK: Properties
+
     dynamic var title = ""
     dynamic var phAssetidentifier = ""
-    dynamic var videoUrl = ""
     dynamic var createdAt = Date()
     dynamic var updatedAt = Date()
 
@@ -33,4 +35,5 @@ class Phrase: Object {
             })
         }
     }
+
 }

@@ -142,8 +142,9 @@ class PhraseTableViewController: UITableViewController {
 
     private func fetchPhrases() -> Array<Phrase> {
         let realm = try! Realm()
+        let phrases = Array(realm.objects(Phrase.self))
 
-        return Array(realm.objects(Phrase.self))
+        return phrases
     }
 
     // MARK: Actions
@@ -164,4 +165,5 @@ class PhraseTableViewController: UITableViewController {
             }
         }
     }
+
 }
