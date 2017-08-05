@@ -53,13 +53,20 @@
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="2ht-MR-z9f"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eeB-BK-9fV">
+                            <connections>
+                                <segue destination="Oyv-Fd-SjH" kind="unwind" unwindAction="unwindToPhraseListWithSender:" id="S91-ow-2sw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="saveButton" destination="eeB-BK-9fV" id="SjM-07-sSD"/>
                         <outlet property="titleTextField" destination="G1Q-y3-dv2" id="OuK-QK-lX4"/>
                         <outlet property="videoImageView" destination="n90-2x-yAx" id="89X-ye-TrT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Oyv-Fd-SjH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2148" y="769.56521739130437"/>
         </scene>
@@ -92,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhg-HG-Pew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="-13"/>
+            <point key="canvasLocation" x="2148" y="-13.043478260869566"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ine-y9-fAH">

@@ -111,14 +111,6 @@ class PhraseTableViewController: UITableViewController {
     }
     */
 
-    // MARK: Private Methods
-
-    private func fetchPhrases() -> Array<Phrase> {
-        let realm = try! Realm()
-
-        return Array(realm.objects(Phrase.self))
-    }
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -144,5 +136,19 @@ class PhraseTableViewController: UITableViewController {
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
+    }
+
+    // MARK: Private Methods
+
+    private func fetchPhrases() -> Array<Phrase> {
+        let realm = try! Realm()
+
+        return Array(realm.objects(Phrase.self))
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func unwindToPhraseList(sender: UIStoryboardSegue) {
+
     }
 }

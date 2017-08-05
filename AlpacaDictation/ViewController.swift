@@ -10,18 +10,21 @@ import UIKit
 import Photos
 import AVKit
 import AVFoundation
+import RealmSwift
+import os.log
 
 class ViewController: UIViewController, UINavigationControllerDelegate {
+    // MARK: Properties
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var videoImageView: UIImageView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
 
     var phrase: Phrase?            // for persisted item
-    var tmpVideoPHAsset: PHAsset?  // for new item not saved yet
     var tmpVideoAsset: AVURLAsset? // for new item not saved yet
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
         if let phrase = phrase {
             titleTextField.text = phrase.title
@@ -36,6 +39,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
         videoImageView.isUserInteractionEnabled = true
         videoImageView.addGestureRecognizer(tapGestureRecognizer)
+
+        // Enable the Save button only if the text field has a valid Phrase name.
+        updateSaveButtonState()
     }
 
     func imageTapped(sender: UITapGestureRecognizer) {
@@ -67,6 +73,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: UITextFieldDelegate
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+//        saveButton.isEnabled = false
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+
+    // MARK: Navigation
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         if presentingViewController is UINavigationController {
@@ -74,5 +95,68 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         } else if let owingNavigationController = navigationController {
             owingNavigationController.popViewController(animated: true)
         }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let title = titleTextField.text ?? ""
+
+        if let phrase = phrase {
+            let realm = phrase.realm!
+            try! realm.write {
+                phrase.title = title
+            }
+        } else {
+            let albumTitle: String = "AlpacaDictation"
+            let fetchOptions: PHFetchOptions = PHFetchOptions()
+            fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
+            let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+            guard let collection = fetchResult.firstObject else {
+                fatalError("MyAlbum was not found.")
+            }
+
+            PHPhotoLibrary.shared().performChanges({
+                // save video
+                let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: self.tmpVideoAsset!.url)
+                let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
+                let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: collection)
+                let enumeration: NSArray = [assetPlaceholder!]
+                albumChangeRequest!.addAssets(enumeration)
+
+            }, completionHandler: ({ (isSuccess, error) in
+                // fetch latest video
+                let fetchOptions: PHFetchOptions = PHFetchOptions()
+                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+                guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
+                    fatalError("piyo")
+                }
+    
+                // instantiate Phrase
+                let phrase = Phrase()
+                phrase.title = title
+                phrase.phAssetidentifier = latestVideoAsset.localIdentifier
+    
+                // save Phrase
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(phrase)
+                }
+                self.phrase = phrase
+            }))
+        }
+    }
+
+    // MARK: Private Methods
+
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+//        let text = titleTextField.text ?? ""
+//        saveButton.isEnabled = !text.isEmpty
     }
 }
