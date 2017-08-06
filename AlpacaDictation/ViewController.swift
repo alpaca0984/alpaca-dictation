@@ -39,7 +39,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
             videoImageView.image = UIImage(cgImage: cgImage)
         }
 
-        // assign tap gesture to UIImageView
+        // Assign tap gesture to UIImageView.
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:)))
         videoImageView.addGestureRecognizer(tapGestureRecognizer)
 
@@ -48,10 +48,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
     }
 
     func imageTapped(sender: UITapGestureRecognizer) {
-        // activate play sound
+        // Activate background sound.
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
 
-        // play video
+        // Play video.
         if phrase != nil, let asset = phrase.getPHAsset() {
             PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil, resultHandler: { (result, info) in
                 self.playVideo(playerItem: result!)
@@ -102,28 +102,28 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
             return
         }
 
-        // input values
+        // Get input values.
         let title = titleTextField.text ?? ""
 
         if phrase != nil {
-            // update Phrase properties
+            // Update Phrase properties.
             let realm = phrase.realm!
             try! realm.write {
                 phrase.title = title
             }
         } else {
-            // fetch Album
+            // Fetch Album.
             guard let collection = AlbumFinder.fetchDefault() else {
                 fatalError("Album not found.")
             }
 
-            // instantiate new Phrase that will be saved
+            // Instantiate new Phrase that will be saved.
             phrase = Phrase(value: ["title" : title])
 
-            // save PHAsset and Phrase model
-            // TODO: Use `performChanges` instead. `~AndWait` should not be used in main thread
+            // Save PHAsset and Phrase model.
+            // TODO: Use `performChanges` instead. `~AndWait` should not be used in main thread.
             try! PHPhotoLibrary.shared().performChangesAndWait({
-                // save video
+                // Save video.
                 let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: self.tmpVideoAsset.url)
                 let assetPlaceholder: PHObjectPlaceholder? = createAssetRequest?.placeholderForCreatedAsset!
                 let albumChangeRequest: PHAssetCollectionChangeRequest? = PHAssetCollectionChangeRequest(for: collection)
@@ -131,7 +131,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
                 albumChangeRequest!.addAssets(enumeration)
             })
 
-            // fetch latest video
+            // Fetch latest video.
             let fetchOptions = PHFetchOptions()
             fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
@@ -139,7 +139,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
             }
             self.phrase.phAssetidentifier = latestVideoAsset.localIdentifier
 
-            // save Phrase
+            // Save Phrase.
             let realm = try! Realm()
             try! realm.write {
                 realm.add(self.phrase)

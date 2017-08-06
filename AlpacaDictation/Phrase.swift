@@ -30,7 +30,7 @@ class Phrase: Object {
 
     func setThumbnail(toImageView imageView: UIImageView) {
         if let asset = getPHAsset() {
-            // parameters and options for requesting thumbnail
+            // Set parameters and options for requesting thumbnail.
             let frameSize = imageView.frame.size
             let options = PHImageRequestOptions()
             options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat

@@ -22,7 +22,7 @@ class PhraseTableViewController: UITableViewController {
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
 
-        // search Album and set to property
+        // Load phrase records.
         phrases = fetchPhrases()
     }
 
@@ -47,7 +47,7 @@ class PhraseTableViewController: UITableViewController {
         }
         let phrase = phrases[indexPath.row]
 
-        // set properties to TableCell
+        // Set properties to TableCell.
 
         cell.titleLabel.text = phrase.title
 
@@ -71,11 +71,11 @@ class PhraseTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            // Delete the row from the data source.
 
             let phrase = phrases[indexPath.row]
 
-            // delete PHAsset
+            // Delete PHAsset.
             if let asset = phrase.getPHAsset(), asset.canPerform(PHAssetEditOperation.delete) {
                 PHPhotoLibrary.shared().performChanges({
                     let assetsWillDelete: NSArray = [asset]
@@ -87,13 +87,13 @@ class PhraseTableViewController: UITableViewController {
                 })
             }
 
-            // delete Phrase object
+            // Delete Phrase object.
             let realm = phrase.realm!
             try! realm.write {
                 realm.delete(phrase)
             }
 
-            // delete from view
+            // Delete from view.
             phrases.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
 
