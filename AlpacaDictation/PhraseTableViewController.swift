@@ -124,7 +124,7 @@ class PhraseTableViewController: UITableViewController {
 
         switch segue.identifier ?? "" {
         case "ShowDetail":
-            guard let viewController = segue.destination as? ViewController else {
+            guard let viewController = segue.destination as? PhraseViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             guard let selectedPhraseCell = sender as? PhraseTableViewCell else {
@@ -155,7 +155,7 @@ class PhraseTableViewController: UITableViewController {
     // MARK: Actions
 
     @IBAction func unwindToPhraseList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? ViewController, let phrase = sourceViewController.phrase {
+        if let sourceViewController = sender.source as? PhraseViewController, let phrase = sourceViewController.phrase {
             if let selectdIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing phrase.
                 phrases[selectdIndexPath.row] = phrase

@@ -42,7 +42,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         print("rocorded a video")
 
         // next destination
-        guard let nextViewController = storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+        guard let nextViewController = storyboard?.instantiateViewController(withIdentifier: "PhraseViewController") as? PhraseViewController else {
             fatalError("foo")
         }
         nextViewController.tmpVideoAsset = AVURLAsset(url: url)

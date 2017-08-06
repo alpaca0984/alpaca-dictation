@@ -10,7 +10,7 @@
 		043D28AD548D7317DC03F9A6 /* Pods_AlpacaDictationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DC9D812B390D0E78016919 /* Pods_AlpacaDictationTests.framework */; };
 		BC41A292561E5D0A16EF949E /* Pods_AlpacaDictation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFEEC06FD2FE34E370F5566 /* Pods_AlpacaDictation.framework */; };
 		F72290071F2F5BB60049AB1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72290061F2F5BB60049AB1E /* AppDelegate.swift */; };
-		F72290091F2F5BB60049AB1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72290081F2F5BB60049AB1E /* ViewController.swift */; };
+		F72290091F2F5BB60049AB1E /* PhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72290081F2F5BB60049AB1E /* PhraseViewController.swift */; };
 		F722900C1F2F5BB60049AB1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F722900A1F2F5BB60049AB1E /* Main.storyboard */; };
 		F722900E1F2F5BB60049AB1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F722900D1F2F5BB60049AB1E /* Assets.xcassets */; };
 		F72290111F2F5BB60049AB1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F722900F1F2F5BB60049AB1E /* LaunchScreen.storyboard */; };
@@ -41,7 +41,7 @@
 		DE33181381ADF0977EA6C66F /* Pods-AlpacaDictationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlpacaDictationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlpacaDictationTests/Pods-AlpacaDictationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F72290031F2F5BB60049AB1E /* AlpacaDictation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlpacaDictation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72290061F2F5BB60049AB1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F72290081F2F5BB60049AB1E /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		F72290081F2F5BB60049AB1E /* PhraseViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PhraseViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F722900B1F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F722900D1F2F5BB60049AB1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F72290101F2F5BB60049AB1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F72290061F2F5BB60049AB1E /* AppDelegate.swift */,
-				F72290081F2F5BB60049AB1E /* ViewController.swift */,
+				F72290081F2F5BB60049AB1E /* PhraseViewController.swift */,
 				F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */,
 				F7F9AF5E1F336FAC002BD095 /* Phrase.swift */,
 				F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */,
@@ -351,7 +351,7 @@
 				F7D4DFFD1F2F80D900FA0A44 /* PhraseTableViewController.swift in Sources */,
 				F73D27751F36DE430053613B /* AlbumFinder.swift in Sources */,
 				F7D4DFFB1F2F752500FA0A44 /* CameraViewController.swift in Sources */,
-				F72290091F2F5BB60049AB1E /* ViewController.swift in Sources */,
+				F72290091F2F5BB60049AB1E /* PhraseViewController.swift in Sources */,
 				F7D4DFFF1F2F84C600FA0A44 /* PhraseTableViewCell.swift in Sources */,
 				F72290071F2F5BB60049AB1E /* AppDelegate.swift in Sources */,
 			);

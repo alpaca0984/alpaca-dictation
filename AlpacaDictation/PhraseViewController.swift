@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PhraseViewController.swift
 //  AlpacaDictation
 //
 //  Created by Masataka Hirano on 2017/07/31.
@@ -13,7 +13,7 @@ import AVFoundation
 import RealmSwift
 import os.log
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
+class PhraseViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
 
     // MARK: Properties
 
