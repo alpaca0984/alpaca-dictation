@@ -146,7 +146,8 @@ class PhraseTableViewController: UITableViewController {
 
     private func fetchPhrases() -> Array<Phrase> {
         let realm = try! Realm()
-        let phrases = Array(realm.objects(Phrase.self))
+        let results: Results<Phrase> = realm.objects(Phrase.self)
+        let phrases: Array<Phrase> = Array(results)
 
         return phrases
     }

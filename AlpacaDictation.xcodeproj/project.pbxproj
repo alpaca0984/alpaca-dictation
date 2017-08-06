@@ -15,6 +15,7 @@
 		F722900E1F2F5BB60049AB1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F722900D1F2F5BB60049AB1E /* Assets.xcassets */; };
 		F72290111F2F5BB60049AB1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F722900F1F2F5BB60049AB1E /* LaunchScreen.storyboard */; };
 		F722901C1F2F5BB70049AB1E /* AlpacaDictationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F722901B1F2F5BB70049AB1E /* AlpacaDictationTests.swift */; };
+		F73D27751F36DE430053613B /* AlbumFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73D27741F36DE430053613B /* AlbumFinder.swift */; };
 		F7D4DFFB1F2F752500FA0A44 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */; };
 		F7D4DFFD1F2F80D900FA0A44 /* PhraseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */; };
 		F7D4DFFF1F2F84C600FA0A44 /* PhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 		F72290171F2F5BB70049AB1E /* AlpacaDictationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlpacaDictationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F722901B1F2F5BB70049AB1E /* AlpacaDictationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlpacaDictationTests.swift; sourceTree = "<group>"; };
 		F722901D1F2F5BB70049AB1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F73D27741F36DE430053613B /* AlbumFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumFinder.swift; sourceTree = "<group>"; };
 		F7D4DFFA1F2F752500FA0A44 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F7D4DFFC1F2F80D900FA0A44 /* PhraseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PhraseTableViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		F7D4DFFE1F2F84C600FA0A44 /* PhraseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				F722900D1F2F5BB60049AB1E /* Assets.xcassets */,
 				F722900F1F2F5BB60049AB1E /* LaunchScreen.storyboard */,
 				F72290121F2F5BB60049AB1E /* Info.plist */,
+				F73D27741F36DE430053613B /* AlbumFinder.swift */,
 			);
 			path = AlpacaDictation;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			files = (
 				F7F9AF5F1F336FAC002BD095 /* Phrase.swift in Sources */,
 				F7D4DFFD1F2F80D900FA0A44 /* PhraseTableViewController.swift in Sources */,
+				F73D27751F36DE430053613B /* AlbumFinder.swift in Sources */,
 				F7D4DFFB1F2F752500FA0A44 /* CameraViewController.swift in Sources */,
 				F72290091F2F5BB60049AB1E /* ViewController.swift in Sources */,
 				F7D4DFFF1F2F84C600FA0A44 /* PhraseTableViewCell.swift in Sources */,

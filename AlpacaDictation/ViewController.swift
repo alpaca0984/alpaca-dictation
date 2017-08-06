@@ -113,18 +113,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
             }
         } else {
             // fetch Album
-            let albumTitle: String = "AlpacaDictation"
-            var fetchOptions: PHFetchOptions = PHFetchOptions()
-            fetchOptions.predicate = NSPredicate(format: "title = %@", albumTitle)
-            let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
-            guard let collection = fetchResult.firstObject else {
-                fatalError("MyAlbum was not found.")
+            guard let collection = AlbumFinder.fetchDefault() else {
+                fatalError("Album not found.")
             }
 
             // instantiate new Phrase that will be saved
             phrase = Phrase(value: ["title" : title])
 
             // save PHAsset and Phrase model
+            // TODO: Use `performChanges` instead. `~AndWait` should not be used in main thread
             try! PHPhotoLibrary.shared().performChangesAndWait({
                 // save video
                 let createAssetRequest: PHAssetChangeRequest? = .creationRequestForAssetFromVideo(atFileURL: self.tmpVideoAsset.url)
@@ -135,7 +132,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UITextFi
             })
 
             // fetch latest video
-            fetchOptions = PHFetchOptions()
+            let fetchOptions = PHFetchOptions()
             fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             guard let latestVideoAsset = PHAsset.fetchAssets(with: .video, options: fetchOptions).firstObject else {
                 fatalError("piyo")
