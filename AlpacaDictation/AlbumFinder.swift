@@ -12,10 +12,10 @@ import Photos
 class AlbumFinder {
 
     class func fetchDefault() -> PHAssetCollection? {
-        return fetch(title: "AlpacaDictation")
+        return fetch(withTitle: "AlpacaDictation")
     }
 
-    class func fetch(title: String) -> PHAssetCollection? {
+    class func fetch(withTitle title: String) -> PHAssetCollection? {
         let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", title)
         let fetchResult: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)

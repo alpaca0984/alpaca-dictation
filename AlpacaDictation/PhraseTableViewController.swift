@@ -41,20 +41,19 @@ class PhraseTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Retrieve TableViewCell.
         let cellIdentifier = "PhraseTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhraseTableViewCell else {
             fatalError("piyo")
         }
+
         let phrase = phrases[indexPath.row]
 
         // Set properties to TableCell.
-
         cell.titleLabel.text = phrase.title
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss"
         cell.createdAtLabel.text = dateFormatter.string(from: phrase.createdAt)
-
         phrase.setThumbnail(toImageView: cell.photoImageView)
 
         return cell

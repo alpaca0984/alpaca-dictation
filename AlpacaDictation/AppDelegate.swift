@@ -22,6 +22,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let config = Realm.Configuration(schemaVersion: 3)
     Realm.Configuration.defaultConfiguration = config
 
+    // Clear tmp directory.
+    func clearTempFolder() {
+        let fileManager = FileManager.default
+        let tempFolderPath = NSTemporaryDirectory()
+        do {
+            let filePaths = try fileManager.contentsOfDirectory(atPath: tempFolderPath)
+            for filePath in filePaths {
+                try fileManager.removeItem(atPath: tempFolderPath + filePath)
+            }
+        } catch {
+            print("Could not clear temp folder: \(error)")
+        }
+    }
+    clearTempFolder()
+
     return true
   }
 
