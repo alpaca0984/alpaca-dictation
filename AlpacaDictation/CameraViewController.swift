@@ -14,7 +14,9 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
     // MARK: Properties
 
-    @IBOutlet var captureButtons: [SwiftyCamButton]!
+    @IBOutlet weak var captureButton: SwiftyCamButton!
+
+    var captureButtonDefault: SwiftyCamButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,9 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
         cameraDelegate = self
 
-        captureButtons.forEach { (captureButton) in
-            captureButton.delegate = self
-            view.addSubview(captureButton)
-        }
+        captureButton.delegate = self
+        captureButtonDefault = captureButton.copy(with: nil) as! SwiftyCamButton
+        view.addSubview(captureButton)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,22 +35,44 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: Delegate for SwiftyCamViewController
-
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
-        print("took a photo")
+    // Notifies the container that the size of its view is about to change.
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            let point = captureButton.frame.origin
+            captureButton.frame.origin = CGPoint(x: point.y, y: point.x)
+        } else {
+            captureButton.frame.origin = captureButtonDefault.frame.origin
+        }
     }
 
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
-        print("rocorded a video")
+    // MARK: Delegate for SwiftyCamViewController
 
-        // next destination
+    /**
+     Called when SwiftyCamViewController begins recording video.
+
+     - Parameter swiftyCam: Current SwiftyCamViewController session
+     - Parameter camera: Current camera orientation
+     */
+    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
+        captureButton.backgroundColor = UIColor.red
+    }
+
+    /**
+     Called when SwiftyCamViewController finishes recording video.
+
+     - Parameter swiftyCam: Current SwiftyCamViewController session
+     - Parameter camera: Current camera orientation
+     */
+    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
+        captureButton.backgroundColor = captureButtonDefault.backgroundColor
+
+        // Next destination
         guard let nextViewController = storyboard?.instantiateViewController(withIdentifier: "PhraseViewController") as? PhraseViewController else {
             fatalError("foo")
         }
         nextViewController.tmpVideoAsset = AVURLAsset(url: url)
 
-        // move to next destination
+        // Move to next destination
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 
@@ -62,5 +85,16 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+private extension SwiftyCamButton {
+
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = SwiftyCamButton(frame: self.frame)
+        copy.backgroundColor = self.backgroundColor
+
+        return copy
+    }
 
 }

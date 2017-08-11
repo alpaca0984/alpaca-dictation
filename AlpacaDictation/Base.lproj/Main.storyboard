@@ -63,7 +63,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="Oyv-Fd-SjH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2147.6761619190406" y="768.79999999999995"/>
+            <point key="canvasLocation" x="2121" y="981"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="zrC-64-Vo6">
@@ -77,18 +77,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbw-Ne-HZ9" customClass="SwiftyCamButton" customModule="SwiftyCam">
-                                <rect key="frame" x="570" y="172" width="77" height="30"/>
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsf-qc-HOM" customClass="SwiftyCamButton" customModule="SwiftyCam">
+                                <rect key="frame" x="147" y="535" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Shutter"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="AddItem" id="ojz-ID-Nai"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsf-qc-HOM" customClass="SwiftyCamButton" customModule="SwiftyCam">
-                                <rect key="frame" x="149" y="585" width="77" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Shutter"/>
+                                <color key="backgroundColor" red="0.94531816439550431" green="0.94531816439550431" blue="0.94531816439550431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="Uu4-tV-JOP"/>
                                 </connections>
@@ -97,8 +95,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outletCollection property="captureButtons" destination="hbw-Ne-HZ9" collectionClass="NSMutableArray" id="zCt-jB-m8v"/>
-                        <outletCollection property="captureButtons" destination="Xsf-qc-HOM" collectionClass="NSMutableArray" id="QNs-9z-ac7"/>
+                        <outlet property="captureButton" destination="Xsf-qc-HOM" id="ite-Kl-An8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhg-HG-Pew" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,6 +189,6 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ojz-ID-Nai"/>
+        <segue reference="Uu4-tV-JOP"/>
     </inferredMetricsTieBreakers>
 </document>
