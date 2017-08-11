@@ -35,15 +35,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wgf-05-Vix">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n90-2x-yAx">
                                 <rect key="frame" x="16" y="184" width="343" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n90-2x-yAx">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="417"/>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -68,7 +63,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="Oyv-Fd-SjH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="769.56521739130437"/>
+            <point key="canvasLocation" x="2147.6761619190406" y="768.79999999999995"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="zrC-64-Vo6">
@@ -83,18 +78,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbw-Ne-HZ9" customClass="SwiftyCamButton" customModule="SwiftyCam">
-                                <rect key="frame" x="149" y="555" width="77" height="30"/>
+                                <rect key="frame" x="570" y="172" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Shutter"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="AddItem" id="ojz-ID-Nai"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsf-qc-HOM" customClass="SwiftyCamButton" customModule="SwiftyCam">
+                                <rect key="frame" x="149" y="585" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Shutter"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Uu4-tV-JOP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="captureButton" destination="hbw-Ne-HZ9" id="j8y-ya-3xs"/>
+                        <outletCollection property="captureButtons" destination="hbw-Ne-HZ9" collectionClass="NSMutableArray" id="zCt-jB-m8v"/>
+                        <outletCollection property="captureButtons" destination="Xsf-qc-HOM" collectionClass="NSMutableArray" id="QNs-9z-ac7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhg-HG-Pew" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,6 +192,6 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="01M-WQ-Jdr"/>
+        <segue reference="ojz-ID-Nai"/>
     </inferredMetricsTieBreakers>
 </document>

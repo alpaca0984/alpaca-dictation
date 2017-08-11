@@ -14,7 +14,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
     // MARK: Properties
 
-    @IBOutlet weak var captureButton: SwiftyCamButton!
+    @IBOutlet var captureButtons: [SwiftyCamButton]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,10 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
         cameraDelegate = self
 
-        captureButton.delegate = self
-        view.addSubview(captureButton)
+        captureButtons.forEach { (captureButton) in
+            captureButton.delegate = self
+            view.addSubview(captureButton)
+        }
     }
 
     override func didReceiveMemoryWarning() {
