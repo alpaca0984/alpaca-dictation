@@ -26,7 +26,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         cameraDelegate = self
 
         captureButton.delegate = self
-        captureButtonDefault = captureButton.copy(with: nil) as! SwiftyCamButton
+        captureButtonDefault = captureButton.copy() as! SwiftyCamButton
         view.addSubview(captureButton)
     }
 
@@ -88,9 +88,9 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
 }
 
-private extension SwiftyCamButton {
+extension SwiftyCamButton: NSCopying {
 
-    func copy(with zone: NSZone? = nil) -> Any {
+    public func copy(with zone: NSZone? = nil) -> Any {
         let copy = SwiftyCamButton(frame: self.frame)
         copy.backgroundColor = self.backgroundColor
 
