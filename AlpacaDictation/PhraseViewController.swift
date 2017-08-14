@@ -30,6 +30,7 @@ class PhraseViewController: UIViewController, UINavigationControllerDelegate, UI
         titleTextField.delegate = self
 
         if phrase != nil {
+            navigationItem.title = phrase.title
             titleTextField.text = phrase.title
             phrase.setThumbnail(toImageView: videoImageView)
         } else {
